@@ -1,13 +1,13 @@
-import React, {useEffect, useState} from 'react';
+import React, { useState} from 'react';
 import TodoItem from "../TodoItem";
 
 const TodoList = () => {
   const [todos, setTodos] = useState(JSON.parse(localStorage.getItem('todos')) || [])
   const [newTodo, setNewTodo] = useState('')
 
-  useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(todos))
-  }, [todos])
+  // useEffect(() => {
+  //   localStorage.setItem("todos", JSON.stringify(todos))
+  // }, [todos])
 
 
 
@@ -18,6 +18,7 @@ const TodoList = () => {
   const handleDone = (e, index) => {
     console.log(e.target.checked, index)
     const updatedArray = todos.map((item, idx) => (index === idx) ? {...item, isDone: e.target.checked} : item)
+    localStorage.setItem('todos', JSON.stringify(updatedArray))
     setTodos(updatedArray)
   }
 
@@ -27,14 +28,15 @@ const TodoList = () => {
     newTodo.trim() === ''
       ? alert('fill')
       : setTodos([...todos, {title: newTodo, isDone: false}])
-    // {console.log(setTodos)}
+    const todosWithNew = [...todos, {title: newTodo, isDone: false}]
+    localStorage.setItem('todos', JSON.stringify(todosWithNew))
     setNewTodo('')
-
   }
 
 
   const deleteItem = (i) => {
     const filterList = todos.filter((item, idx) => idx !== i)
+    localStorage.setItem('todos', JSON.stringify(filterList))
     setTodos((filterList))
   }
 
