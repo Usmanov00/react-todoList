@@ -1,0 +1,11 @@
+.catalog{
+    background-color: red;
+}
+.title{
+    padding: 30px;
+    font-size: 20px;
+    color: blueviolet;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
