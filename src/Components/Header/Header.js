@@ -14,9 +14,7 @@ const Header = () => {
         <Link to="/welcome">Welcome</Link>
         <Link to="/users">Users</Link>
         <Link to="/TodoList">TodoList</Link>
-
       </nav>
-
     </header>
   );
 };
